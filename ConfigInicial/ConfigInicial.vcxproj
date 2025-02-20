@@ -86,12 +86,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\include;C:\Users\mario\Desktop\ConfigInicial\External Libraries\glm;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\include;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\glm;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -103,14 +103,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\include;C:\Users\mario\Desktop\ConfigInicial\External Libraries\glm;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\include;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\glm;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -120,12 +120,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\include;C:\Users\mario\Desktop\ConfigInicial\External Libraries\glm;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\include;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\glm;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -137,14 +137,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\include;C:\Users\mario\Desktop\ConfigInicial\External Libraries\glm;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\include;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\glm;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ConfigInicial\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLFW\lib-vc2015;C:\Users\mario\Desktop\ComputacionGrafica\External Libraries\GLEW\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
