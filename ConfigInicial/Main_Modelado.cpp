@@ -205,7 +205,7 @@ int main() {
 		
 		//Pata 1
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(3.0f, 0.6f, 0.1f)); //Tamano de la pata
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
 		model = glm::translate(model, glm::vec3(14.0f, -0.4f, 8.5)); //Posiciona la pata
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
