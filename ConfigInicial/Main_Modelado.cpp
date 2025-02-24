@@ -1,6 +1,10 @@
  #include<iostream>
 
 //#define GLEW_STATIC
+//Practica 4
+//Luis Olivos
+//28/02/2025
+//319284085
 
 #include <GL/glew.h>
 
@@ -21,7 +25,7 @@ void Inputs(GLFWwindow *window);
 const GLint WIDTH = 800, HEIGHT = 600;
 float movX=0.0f;
 float movY=0.0f;
-float movZ=-5.0f;
+float movZ=-15.0f;
 float rot = 0.0f;
 int main() {
 	glfwInit();
@@ -197,39 +201,73 @@ int main() {
 
 		glBindVertexArray(VAO);
 	
+
+		//Parte trasera del torso
 	    model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(3.0f, 0.1f, 2.0f));  //Ancho, grosor, profundidad
+		model = glm::scale(model, glm::vec3(10.0f, 8.6f, 7.0f));  //Ancho, grosor, profundidad
 		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//Torso
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 8.0f));  //Ancho, grosor, profundidad
+		model = glm::translate(model, glm::vec3(1.0f, 0.6f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+		////Cuello
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(10.0f, 5.0f, 4.0f));  //Ancho, grosor, profundidad
+		//model = glm::translate(model, glm::vec3(2.0f, 0.6f, 0.0f));
+		//model = glm::rotate(model, 0.3f, glm::vec3(10.0f, 5.0f, 4.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 		
-		//Pata 1
+		// Cuello
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
-		model = glm::translate(model, glm::vec3(14.0f, -0.4f, 8.5)); //Posiciona la pata
+		model = glm::translate(model, glm::vec3(2.0f, 0.6f, 0.0f)); // Primero trasladamos
+		model = glm::rotate(model, 0.3f, glm::vec3(1.0f, 0.0f, 0.0f)); // Rotación en X (hacia arriba)
+		model = glm::scale(model, glm::vec3(10.0f, 5.0f, 4.0f)); // Ancho, grosor, profundidad
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		//Pata 2
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
-		model = glm::translate(model, glm::vec3(-14.0f, -0.4f, 8.5f)); //Posiciona la pata
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		//Pata 3
+		//Cabeza
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
-		model = glm::translate(model, glm::vec3(-14.0f, -0.4f, -8.5f)); //Posiciona la pata
+		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));  //Ancho, grosor, profundidad
+		model = glm::translate(model, glm::vec3(5.0f, 0.6f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+		
+		////Pata 1
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
+		//model = glm::translate(model, glm::vec3(14.0f, -0.4f, 8.5)); //Posiciona la pata
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		//Pata 4
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
-		model = glm::translate(model, glm::vec3(14.0f, -0.4f, -8.5f)); //Posiciona la pata
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		////Pata 2
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
+		//model = glm::translate(model, glm::vec3(-14.0f, -0.4f, 8.5f)); //Posiciona la pata
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		////Pata 3
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
+		//model = glm::translate(model, glm::vec3(-14.0f, -0.4f, -8.5f)); //Posiciona la pata
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		////Pata 4
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamano de la pata
+		//model = glm::translate(model, glm::vec3(14.0f, -0.4f, -8.5f)); //Posiciona la pata
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
 		glBindVertexArray(0);
