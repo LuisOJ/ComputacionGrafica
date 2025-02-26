@@ -225,11 +225,18 @@ int main() {
 		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		//glDrawArrays(GL_TRIANGLES, 0, 36);
 		
-		// Cuello
+		//// Cuello
+		//model = glm::mat4(1.0f);
+		//model = glm::translate(model, glm::vec3(2.0f, 0.6f, 0.0f)); // Primero trasladamos
+		//model = glm::rotate(model, 0.3f, glm::vec3(1.0f, 0.0f, 0.0f)); // Rotación en X (hacia arriba)
+		//model = glm::scale(model, glm::vec3(10.0f, 5.0f, 4.0f)); // Ancho, grosor, profundidad
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//Cuello
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(2.0f, 0.6f, 0.0f)); // Primero trasladamos
-		model = glm::rotate(model, 0.3f, glm::vec3(1.0f, 0.0f, 0.0f)); // Rotación en X (hacia arriba)
-		model = glm::scale(model, glm::vec3(10.0f, 5.0f, 4.0f)); // Ancho, grosor, profundidad
+		model = glm::scale(model, glm::vec3(5.5f, 7.5f, 7.0f));  //Ancho, grosor, profundidad
+		model = glm::translate(model, glm::vec3(3.0f, 0.6f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -237,7 +244,14 @@ int main() {
 		//Cabeza
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));  //Ancho, grosor, profundidad
-		model = glm::translate(model, glm::vec3(5.0f, 0.6f, 0.0f));
+		model = glm::translate(model, glm::vec3(2.3f, 0.6f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		//Oreja
+		model = glm::mat4(1.0f);
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));  //Ancho, grosor, profundidad
+		model = glm::translate(model, glm::vec3(10.0f, 11.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		
