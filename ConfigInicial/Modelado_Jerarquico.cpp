@@ -266,7 +266,7 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);//E
 
 		//// Model Dedo3
-		//model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.15f, 0.375f));
+		//model = glm::translate(modelTemp2, glm::vec3(-0.50f, -0.0f, -0.1875f));
 		//model = glm::rotate(model, glm::radians(dedo3), glm::vec3(0.0f, 0.0f, 1.0f));
 		//modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
 		//model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
@@ -286,7 +286,7 @@ int main() {
 		//glDrawArrays(GL_TRIANGLES, 0, 36);//E
 
 		//// Model Dedo5
-		//model = glm::translate(modelTemp2, glm::vec3(0.25f, -0.05f, 0.375f));
+		//model = glm::translate(modelTemp2, glm::vec3(-0.50f, -0.0f, -0.1875f));
 		//model = glm::rotate(model, glm::radians(dedo5), glm::vec3(0.0f, 0.0f, 1.0f));
 		//modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
 		//model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
@@ -306,7 +306,7 @@ int main() {
 		//glDrawArrays(GL_TRIANGLES, 0, 36);//E
 
 		//// Model Dedo7
-		//model = glm::translate(modelTemp2, glm::vec3(0.25f, -0.05f, 0.375f));
+		//model = glm::translate(modelTemp2, glm::vec3(-0.50f, -0.0f, -0.1875f));
 		//model = glm::rotate(model, glm::radians(dedo7), glm::vec3(0.0f, 0.0f, 1.0f));
 		//modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
 		//model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
@@ -326,7 +326,7 @@ int main() {
 		//glDrawArrays(GL_TRIANGLES, 0, 36);//E
 
 		////Dedo 9 Model Pulgar
-		//model = glm::translate(modelTemp2, glm::vec3(0.0f, -0.2f, -0.3f));
+		//model = glm::translate(modelTemp2, glm::vec3(-0.50f, -0.0f, -0.1875f));
 		//model = glm::rotate(model, glm::radians(dedo9), glm::vec3(0.0f, 0.0f, 1.0f));
 		//modelTemp = model = glm::translate(model, glm::vec3(0.35f, -0.15f, 0.0f));
 		//model = glm::scale(model, glm::vec3(0.7f, 0.15f, 0.15f));
@@ -505,6 +505,7 @@ int main() {
 		 dedo1 += 0.12f; // Abrir hasta 10.0f
 	 if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS && dedo1 > 85.0f)
 		 dedo1 -= 0.12f; // Cerrar hasta 85.0f
+
 
 
 
