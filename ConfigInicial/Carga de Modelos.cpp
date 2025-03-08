@@ -1,3 +1,10 @@
+//Carga de modelos		
+//Luis Olivos
+//08 / 03 / 2025		
+//319284085
+
+
+
 // Std. Includes
 #include <string>
 
@@ -54,7 +61,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Carga de modelos y camara sintetica", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Carga de modelos y camara sintetica. Olivos Jimenez Luis Mario", nullptr, nullptr );
     
     if ( nullptr == window )
     {
