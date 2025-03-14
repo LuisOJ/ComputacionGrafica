@@ -102,8 +102,10 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
-    Model spino((char*)"Models/spinolow_MATERI.obj");
-    Model arbol((char*)"Models/arbol.obj");
+    //Model spino((char*)"Models/spinolow_MATERI.obj");
+    Model arbol((char*)"Models/Edgeworthia_Chrysantha_Grandiflora_Tree.obj");
+    Model anemona((char*)"Models/Anemone_Hybrida.obj");
+    Model craneo((char*)"Models/A_T_Rex_skull_0725021143_refine.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
 
     
@@ -137,30 +139,31 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
 
-        //glm::mat4 model(2);
-        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        spino.Draw(shader);
-        arbol.Draw(shader);
-
         model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
         model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 0.0f));
+        model = glm::translate(model, glm::vec3(5.0f, 0.0f, 0.0f));
         model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
+        craneo.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 0.0f));
+    
+        /*model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 0.0f));
         model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        spino.Draw(shader);
+        spino.Draw(shader);*/
 
         model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 2.0f));
         model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         arbol.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 2.0f));
+        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        anemona.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
