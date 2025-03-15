@@ -1,6 +1,6 @@
-//Carga de modelos		
+//Practica 6		
 //Luis Olivos
-//08 / 03 / 2025		
+//14 / 03 / 2025		
 //319284085
 
 
@@ -102,10 +102,11 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
-    //Model spino((char*)"Models/spinolow_MATERI.obj");
-    Model arbol((char*)"Models/Edgeworthia_Chrysantha_Grandiflora_Tree.obj");
-    Model anemona((char*)"Models/Anemone_Hybrida.obj");
-    Model craneo((char*)"Models/A_T_Rex_skull_0725021143_refine.obj");
+    Model spino((char*)"Models/Espin2/model.obj");
+    Model arbol((char*)"Models/arbol/model.obj");
+    Model anemona((char*)"Models/anemona/Anemone_Hybrida.obj");
+    Model craneo((char*)"Models/craneo/A_T_Rex_skull_0725021143_refine.obj");
+    Model indomi((char*)"Models/lindominus/model.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
 
     
@@ -150,20 +151,31 @@ int main( )
         craneo.Draw(shader);
 
     
-        /*model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        model = glm::translate(model, glm::vec3(-3.5f, -0.5f, 0.0f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotación de -90° en Y (hacia la derecha)
+        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        spino.Draw(shader);*/
+        spino.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 2.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+
+        model = glm::translate(model, glm::vec3(-3.0f, -0.5f, 2.0f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotación de 180° en Y
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         arbol.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 2.0f));
+
+        model = glm::translate(model, glm::vec3(3.0f, -1.0f, 2.0f));
         model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         anemona.Draw(shader);
+
+        model = glm::translate(model, glm::vec3(3.2f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotación de -90° en Y (hacia la derecha)
+        model = glm::scale(model, glm::vec3(150.0f, 150.0f, 150.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        indomi.Draw(shader);
+
 
         // Swap the buffers
         glfwSwapBuffers( window );
