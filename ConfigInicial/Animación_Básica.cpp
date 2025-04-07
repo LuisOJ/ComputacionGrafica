@@ -30,6 +30,8 @@
 #include "Camera.h"
 #include "Model.h"
 
+
+
 glm::mat4 modelTemp(1.0f);  // Matriz temporal para transformaciones del modelo
 
 
