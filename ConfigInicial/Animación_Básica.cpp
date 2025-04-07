@@ -116,6 +116,7 @@ float rotDog = 0.0f;
 bool AnimBall = false;
 
 
+
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
@@ -488,7 +489,21 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 void Animation() {
 	if (AnimBall) {
 		rotBall -= 0.05f;  // Velocidad pelota
+		//printf("%f", rotBall);
 		rotDog += 0.05f;   // Velocidad perro (más lento)
+		//printf("%f", rotDog);
+
+		// Calcular posiciones (como en el bucle principal)
+		glm::mat4 modelTempDog = glm::rotate(glm::mat4(1.0f), glm::radians(rotDog), glm::vec3(0.0f, 1.0f, 0.0f));
+		glm::vec3 dogPos = glm::vec3(modelTempDog * glm::vec4(2.0f, 0.0f, 0.0f, 1.0f));
+
+		glm::mat4 modelTempBall = glm::rotate(glm::mat4(1.0f), glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
+		glm::vec3 ballPos = glm::vec3(modelTempBall * glm::vec4(2.0f, 1.5f, 0.0f, 1.0f));
+
+		// Imprimir posiciones
+		std::cout << "=== Posiciones actuales ===" << std::endl;
+		std::cout << "Perro (Dog): X=" << dogPos.x << ", Y=" << dogPos.y << ", Z=" << dogPos.z << std::endl;
+		std::cout << "Pelota (Ball): X=" << ballPos.x << ", Y=" << ballPos.y << ", Z=" << ballPos.z << std::endl << std::endl;
 	}
 	//if (AnimBall)
 	//{
