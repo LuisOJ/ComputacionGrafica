@@ -1,7 +1,7 @@
 // Práctica 10 animación básica
 // Olivos Jimenez Luis Mario
 // 319284085
-// 05/04/2025
+// 11/04/2025
 
 
 #include <iostream>
@@ -137,7 +137,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Práctica 10 animación básica , Olivos Jimenez Luis Mario, 07/04/2025, 319284085", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 10 animacion basica , Olivos Jimenez Luis Mario, 11/04/2025, 319284085", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
