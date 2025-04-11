@@ -480,7 +480,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 void Animation() {
 	if (AnimBall) {
 		// Rotación base
-		rotBall -= 0.05f;
+		rotBall -= 0.10f;
 
 		// Resetear ángulo cuando completa un círculo
 		if (rotBall < -360.0f) {
