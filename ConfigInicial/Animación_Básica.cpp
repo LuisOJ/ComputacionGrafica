@@ -113,9 +113,11 @@ glm::vec3 Light1 = glm::vec3(0);
 
 
 //Animacion
-float rotBall = -215;
-float rotDog = 0.0f;
+float rotBall = -50;
+float rotDog = 0.0;
 bool AnimBall = false;
+float salto = 0.0f;       // Controla el movimiento vertical (salto)
+float rot = 0.0f;         // Controla la rotación adicional
 
 
 
@@ -300,53 +302,39 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Piso.Draw(lightingShader);
 
-		/*model = glm::mat4(1);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -0.5f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
-		Dog.Draw(lightingShader);*/
-
+		//Perro
 		glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		modelTemp = model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		//modelTemp = glm::rotate(modelTemp, glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
-		modelTemp = glm::rotate(modelTemp, glm::radians(rotDog), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::mat4(1);
+
+		modelTemp = model = glm::translate(model, glm::vec3(0.0f, salto / 2, 0.0f));
+		modelTemp = glm::rotate(modelTemp, glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(modelTemp, glm::vec3(2.0f, 0.0f, 0.0f));
+
+		model = glm::rotate(model, glm::radians((salto) + rot), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
-
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Dog.Draw(lightingShader);
-		glDisable(GL_BLEND);
 		glBindVertexArray(0);
-
 
 		///////////Pelota
 		model = glm::mat4(1);
 		glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-
-		modelTemp = model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		modelTemp = glm::rotate(modelTemp, glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(modelTemp, glm::vec3(2.0f, 1.5f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 0);
+		glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 1);
+
+		modelTemp = model = glm::translate(model, glm::vec3(0.0f, (-salto) + 1.5f, 0.0f));
+		modelTemp = glm::rotate(modelTemp, glm::radians(rotBall - 30), glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::translate(modelTemp, glm::vec3(2.0f, 0.0f, 0.0f));
+
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Ball.Draw(lightingShader);
-		glDisable(GL_BLEND);
+		glDisable(GL_BLEND);  //Desactiva el canal alfa 
 		glBindVertexArray(0);
-
-
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//glUniform1i(glGetUniformLocation(lightingShader.Program, "transparency"), 1);
-		//model = glm::translate(model, glm::vec3(0.0f, 0.8f, 0.2f));
-		//model = glm::rotate(model, glm::radians(rotBall), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Ball.Draw(lightingShader);
-		//glDisable(GL_BLEND);  //Desactiva el canal alfa 
-		//glBindVertexArray(0);
-
+		
+		
 
 		// Also draw the lamp object, again binding the appropriate shader
 		lampShader.Use();
@@ -488,35 +476,66 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
 	}
 }
+
 void Animation() {
 	if (AnimBall) {
-		rotBall -= 0.05f;  // Velocidad pelota
-		//printf("%f", rotBall);
-		rotDog += 0.05f;   // Velocidad perro (más lento)
-		//printf("%f", rotDog);
+		// Rotación base
+		rotBall -= 0.05f;
 
-		// Calcular posiciones (como en el bucle principal)
-		glm::mat4 modelTempDog = glm::rotate(glm::mat4(1.0f), glm::radians(rotDog), glm::vec3(0.0f, 1.0f, 0.0f));
-		glm::vec3 dogPos = glm::vec3(modelTempDog * glm::vec4(2.0f, 0.0f, 0.0f, 1.0f));
+		// Resetear ángulo cuando completa un círculo
+		if (rotBall < -360.0f) {
+			rotBall = 0.0f;
+		}
 
-		glm::mat4 modelTempBall = glm::rotate(glm::mat4(1.0f), glm::radians(rotBall), glm::vec3(0.0f, 1.0f, 0.0f));
-		glm::vec3 ballPos = glm::vec3(modelTempBall * glm::vec4(2.0f, 1.5f, 0.0f, 1.0f));
+		// Rotación del perro sincronizada pero más lenta
+		rotDog = -rotBall * 0.8f;
 
-		// Imprimir posiciones
-		std::cout << "=== Posiciones actuales ===" << std::endl;
-		std::cout << "Perro (Dog): X=" << dogPos.x << ", Y=" << dogPos.y << ", Z=" << dogPos.z << std::endl;
-		std::cout << "Pelota (Ball): X=" << ballPos.x << ", Y=" << ballPos.y << ", Z=" << ballPos.z << std::endl << std::endl;
+		// Control de movimientos adicionales cuando están alineados
+		// Primer encuentro (parte superior)
+		if (rotBall <= -150 && rotBall > -210) {
+			// Movimiento de salto
+			float progress = (rotBall + 150.0f) / -60.0f; // Normalizado 0-1
+			salto = sin(progress * glm::pi<float>()) * 0.9f;
+
+			// Pequeña rotación adicional
+			rot = sin(progress * glm::pi<float>()) * 35.0f;
+		}
+		// Segundo encuentro (parte inferior)
+		else if (rotBall <= -330 && rotBall > -360) {
+
+			// Movimiento de salto
+			float progress;
+
+			progress = (rotBall + 330.0f) / -60.0f;
+			salto = sin(progress * glm::pi<float>()) * 0.9f;
+
+			// Pequeña rotación adicional
+			rot = sin(progress * glm::pi<float>()) * 35.0f;
+
+		}
+		else if (rotBall <= 0 && rotBall > -30) {
+
+			// Movimiento de salto
+			float progress;
+
+			progress = (rotBall + 330.0f) / -60.0f;
+
+			salto = sin(progress * glm::pi<float>()) * 0.9f;
+
+			// Pequeña rotación adicional
+			rot = sin(progress * glm::pi<float>()) * 35.0f;
+
+		}
+		else {
+			salto = 0.0f;
+			rot = 0.0f;
+		}
+
+		// Debug: Imprimir valores actuales
+		printf("RotBall: %.2f, Salto: %.3f, Rot: %.2f\n", rotBall, salto, rot);
 	}
-	//if (AnimBall)
-	//{
-	//	rotBall -= 0.3f;
-	//	printf("%f", rotBall);
-	//}
-	//else
-	//{
-	//	//rotBall = 0.0f;
-	//}
 }
+
 
 void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 {
