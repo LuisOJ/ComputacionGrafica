@@ -1,7 +1,8 @@
-//Animación por máquina de estados		
+//Práctica 11 (animación por máquina de estados)	
 //Luis Olivos
-//18 / 04 / 2025		
+//24 / 04 / 2025		
 //319284085
+
 
 
 #include <iostream>
@@ -137,7 +138,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Animacion maquina de estados, Animacion por maquina de estados, Luis Olivos, 18 / 04 / 2025, 319284085", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 11 (animacion por maquina de estados), Luis Olivos, 24 / 04 / 2025, 31928408", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -512,55 +513,94 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	}
 	
 }
+
 void Animation() {
-	if (AnimBall)
-	{
+	if (AnimBall) {
 		rotBall += 0.4f;
-		//printf("/n%f", rotBall);
 	}
-	
-	if (AnimDog)
-	{
-		rotDog -= 0.6f;
-		//printf("/n%f", rotDog);
+
+	if (AnimDog) {
+		rotDog -= 0.10f;
 	}
-	if (dogAnim == 1) {  //Walk Animation
 
-		if (dogPos.z >= 2.25086f) {
-			return;
-		}
-
-
-
-		if (!step) {  //State 1 false
+	// Animación de piernas para todos los estados de movimiento
+	if (dogAnim >= 1 && dogAnim <= 7) {  // Ampliamos a 7 estados
+		if (!step) {
 			RLegs += 0.03f;
 			FLegs += 0.03f;
 			head += 0.03f;
 			tail += 0.03f;
-
-
-			if (RLegs > 15.0f) //Condition
-				step = true;
-
+			if (RLegs > 15.0f) step = true;
 		}
-		else
-		{
+		else {
 			RLegs -= 0.03f;
 			FLegs -= 0.03f;
 			head -= 0.03f;
 			tail -= 0.03f;
-			if (RLegs < -15.0f) //Condition
-				step = false;
+			if (RLegs < -15.0f) step = false;
 		}
-
-
-
-		dogPos.z += 0.0001;
-		//printf("/n%f", RLegs);
-		printf("/n%f", dogPos.z);
-
 	}
-	
+
+	// Máquina de estados principal
+	if (dogAnim == 1) {         
+		if (dogPos.z >= 2.25086f) {
+			dogAnim = 2;
+		}
+		else {
+			dogPos.z += 0.0001f;
+		}
+	}
+	else if (dogAnim == 2) {   
+		dogRot += 0.15f;
+		if (dogRot >= 90.0f) {
+			dogAnim = 3;
+		}
+	}
+	else if (dogAnim == 3) {    
+		if (dogPos.x >= 2.25086f) {
+			dogAnim = 4;
+		}
+		else {
+			dogPos.x += 0.0001f;
+		}
+	}
+	else if (dogAnim == 4) {    
+		dogRot += 0.15f;
+		if (dogRot >= 180.0f) {
+			dogAnim = 5;
+		}
+	}
+	else if (dogAnim == 5) {    
+		if (dogPos.z <= -2.25086f) { 
+			dogAnim = 6;
+		}
+		else {
+			dogPos.z -= 0.0001f;
+		}
+	}
+	else if (dogAnim == 6) {    
+		dogRot += 0.15f;
+		if (dogRot >= 315.0f) {  
+			dogAnim = 7;
+		}
+	}
+	else if (dogAnim == 7) {    
+		// Calcular dirección al origen
+		glm::vec3 direction = glm::normalize(glm::vec3(0) - dogPos);
+		float moveSpeed = 0.0001f;
+
+		// Movimiento hacia el origen
+		dogPos.x += direction.x * moveSpeed;
+		dogPos.z += direction.z * moveSpeed;
+
+		// Detener cerca del origen
+		if (glm::length(dogPos) < 0.1f) {
+			dogAnim = 0;
+			dogPos = glm::vec3(0.0f);
+		}
+	}
+
+	//printf("\nPosición Z: %f, X: %f, Rot: %f", dogPos.z, dogPos.x, dogRot);
 }
 
 void MouseCallback(GLFWwindow *window, double xPos, double yPos)
